@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\JobCards;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Manufacturing\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Manufacturing\FilamentErpManufacturingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\JobCards\Tables\JobCa
 
 class JobCardResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentCheck;
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     protected static ?int $navigationSort = 11;
 
@@ -38,9 +36,9 @@ class JobCardResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return JobCardForm::configure($schema);
+        return JobCardForm::configure($form);
     }
 
     public static function table(Table $table): Table

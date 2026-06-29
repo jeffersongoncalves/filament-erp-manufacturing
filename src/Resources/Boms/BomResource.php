@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Boms;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Manufacturing\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Manufacturing\FilamentErpManufacturingPlugin;
@@ -19,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Boms\Tables\BomsTable
 
 class BomResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?int $navigationSort = 3;
 
@@ -39,9 +37,9 @@ class BomResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return BomForm::configure($schema);
+        return BomForm::configure($form);
     }
 
     public static function table(Table $table): Table

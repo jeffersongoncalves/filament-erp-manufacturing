@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Routings;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Manufacturing\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Manufacturing\FilamentErpManufacturingPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Routings\Tables\Routi
 
 class RoutingResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowPath;
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-path';
 
     protected static ?int $navigationSort = 4;
 
@@ -38,9 +36,9 @@ class RoutingResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return RoutingForm::configure($schema);
+        return RoutingForm::configure($form);
     }
 
     public static function table(Table $table): Table
