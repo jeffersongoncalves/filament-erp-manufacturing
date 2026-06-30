@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Boms\Tables;
 
-use Filament\Tables\Actions;
+use Filament\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -59,11 +59,11 @@ class BomsTable
                 TernaryFilter::make('is_default')
                     ->label('Is Default'),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\WorkOrders;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Manufacturing\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Manufacturing\FilamentErpManufacturingPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\WorkOrders\Tables\Wor
 
 class WorkOrderResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     protected static ?int $navigationSort = 10;
 
@@ -36,9 +38,9 @@ class WorkOrderResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return WorkOrderForm::configure($form);
+        return WorkOrderForm::configure($schema);
     }
 
     public static function table(Table $table): Table

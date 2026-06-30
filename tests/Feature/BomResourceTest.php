@@ -1,5 +1,6 @@
 <?php
 
+use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Core\Models\Company;
 use JeffersonGoncalves\Erp\Manufacturing\Models\Bom;
 use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Boms\Pages\CreateBom;
@@ -54,7 +55,7 @@ it('recomputes the bom cost when item lines are added through the relation manag
         'ownerRecord' => $bom,
         'pageClass' => EditBom::class,
     ])
-        ->callTableAction('create', null, [
+        ->callAction(TestAction::make('create')->table(), data: [
             'item_code' => 'RAW-WOOD',
             'qty' => 4,
             'rate' => 7.5,

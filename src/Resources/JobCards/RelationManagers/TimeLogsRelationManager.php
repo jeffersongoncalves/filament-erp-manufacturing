@@ -2,11 +2,11 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\JobCards\RelationManagers;
 
+use Filament\Actions;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,11 +16,11 @@ class TimeLogsRelationManager extends RelationManager
 
     protected static ?string $title = 'Time Logs';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns(2)
-            ->schema([
+            ->components([
                 DateTimePicker::make('from_time')
                     ->label('From Time'),
                 DateTimePicker::make('to_time')
@@ -57,11 +57,11 @@ class TimeLogsRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
