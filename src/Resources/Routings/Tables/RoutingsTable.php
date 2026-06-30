@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Routings\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -28,11 +28,11 @@ class RoutingsTable
                 TernaryFilter::make('disabled')
                     ->label('Disabled'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
