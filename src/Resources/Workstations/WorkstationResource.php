@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Workstations;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Manufacturing\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Manufacturing\FilamentErpManufacturingPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Manufacturing\Resources\Workstations\Tables\W
 
 class WorkstationResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     protected static ?int $navigationSort = 1;
 
@@ -35,9 +37,9 @@ class WorkstationResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return WorkstationForm::configure($form);
+        return WorkstationForm::configure($schema);
     }
 
     public static function table(Table $table): Table

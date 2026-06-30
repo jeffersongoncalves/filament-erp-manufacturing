@@ -2,9 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Manufacturing\Concerns;
 
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Database\Eloquent\Model;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
 use JeffersonGoncalves\Erp\Manufacturing\Models\WorkOrder;
@@ -25,10 +26,10 @@ trait ManufacturesWorkOrders
     {
         return Action::make('manufacture')
             ->label('Manufacture')
-            ->icon('heroicon-o-cog-6-tooth')
+            ->icon(Heroicon::OutlinedCog6Tooth)
             ->color('primary')
             ->visible(fn (Model $record): bool => $record->getAttribute('docstatus') === DocStatus::Submitted)
-            ->form([
+            ->schema([
                 Select::make('wip_warehouse_id')
                     ->label('WIP Warehouse')
                     ->options(fn (): array => static::warehouseOptions())
