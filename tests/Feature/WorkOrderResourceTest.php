@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
 use JeffersonGoncalves\Erp\Core\Models\Company;
 use JeffersonGoncalves\Erp\Manufacturing\Models\Bom;
@@ -77,7 +76,7 @@ it('submits a work order through the UI and populates required items from the bo
     $workOrder = makeWorkOrder();
 
     Livewire::test(ListWorkOrders::class)
-        ->callAction(TestAction::make('submit')->table($workOrder));
+        ->callTableAction('submit', $workOrder);
 
     $workOrder->refresh();
 
@@ -91,12 +90,12 @@ it('manufactures a submitted work order through the UI, creating a Manufacture s
     $workOrder = makeWorkOrder();
 
     Livewire::test(ListWorkOrders::class)
-        ->callAction(TestAction::make('submit')->table($workOrder));
+        ->callTableAction('submit', $workOrder);
 
     expect($workOrder->refresh()->docstatus)->toBe(DocStatus::Submitted);
 
     Livewire::test(ListWorkOrders::class)
-        ->callAction(TestAction::make('manufacture')->table($workOrder), data: [
+        ->callTableAction('manufacture', $workOrder, [
             'wip_warehouse_id' => $this->wip->id,
             'fg_warehouse_id' => $this->fg->id,
         ]);
